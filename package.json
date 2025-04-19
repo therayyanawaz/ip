@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack -H 0.0.0.0 -p 5000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "netlify-build": "next build"
   },
   "dependencies": {
     "@cemalgnlts/mailjs": "^3.0.1",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@netlify/plugin-nextjs": "^4.41.3",
     "@tanstack/eslint-plugin-query": "^5.73.3",
     "@types/node": "^20",
     "@types/react": "^19",

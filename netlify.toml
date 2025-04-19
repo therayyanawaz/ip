@@ -1,0 +1,26 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  included_files = ["!node_modules/.pnpm/**"]
+
+# Handle 404 errors
+[[redirects]]
+  from = "/*"
+  to = "/_next/static/chunks/pages/404.js"
+  status = 404
+
+# Always redirect to HTTPS
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true 
