@@ -202,7 +202,7 @@ export default function Home() {
           className="flex flex-col md:flex-row"
         >
           {/* Left card */}
-          <Card size="5" style={{ flex: 4 }} className="hidden md:flex">
+          <Card size="6" style={{ flex: 4 }} className="hidden md:flex">
             <Flex direction="column" gap="3" style={{ flex: 1 }}>
               <Box>
                 <Flex gap="3">
@@ -263,7 +263,7 @@ export default function Home() {
           </Card>
 
           {/* Right card */}
-          <Card size="9" style={{ flex: 2 }}>
+          <Card size="4" style={{ flex: 2 }}>
             <Flex direction="column" gap="3">
               {/* User info */}
               <UserInfo user={user} loading={userLoading} email={tempEmail} />
