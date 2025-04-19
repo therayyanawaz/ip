@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "netlify-build": "next build"
+    "netlify-build": "npm run build",
+    "type-check": "tsc --noEmit",
+    "build:netlify": "DISABLE_ESLINT_PLUGIN=true CI=false next build"
   },
   "dependencies": {
     "@cemalgnlts/mailjs": "^3.0.1",

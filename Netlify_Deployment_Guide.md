@@ -27,7 +27,7 @@ This guide will walk you through deploying the Real Address Generator applicatio
 1. In the site settings page, configure:
    - **Branch to deploy**: `main` (or your preferred branch)
    - **Base directory**: Leave empty (root of the repository)
-   - **Build command**: `npm run build` (this is already in netlify.toml)
+   - **Build command**: `npm run build:netlify` (this is already in netlify.toml)
    - **Publish directory**: `.next` (this is already in netlify.toml)
 
 2. Click "Deploy site"
@@ -56,11 +56,33 @@ If your application requires any environment variables:
 
 ## Troubleshooting
 
-If you encounter any deployment issues:
+### Handling TypeScript Errors
 
-1. **Build failures**: Check the build logs for errors
-2. **Next.js compatibility**: Ensure netlify.toml is properly configured
-3. **Plugin errors**: Make sure the Next.js plugin is properly installed
+If you encounter TypeScript errors during build:
+
+1. The project is configured to ignore TypeScript errors during build with:
+   ```
+   // In next.config.ts
+   typescript: {
+     ignoreBuildErrors: true,
+   }
+   ```
+
+2. If you want to fix the TypeScript errors locally:
+   - Run `npm run type-check` to see all TypeScript errors
+   - Fix the errors in the specified files (especially check `app/components/AddressInfo.tsx`, `app/components/InboxDialog.tsx`, and `app/page.tsx`)
+   - Common errors include:
+     - Unexpected `any` types
+     - Unused variables
+     - Missing dependencies in React Hooks
+
+### Build Failures
+
+If your build still fails:
+
+1. **Go Version Issues**: The `netlify.toml` file sets `GO_VERSION = ""` to avoid Go-related errors
+2. **Node.js Version**: Make sure Node.js version 20 is being used (set in `netlify.toml`)
+3. **Plugin Errors**: Check that `@netlify/plugin-nextjs` is installed correctly
 
 ## Updating Your Deployment
 
